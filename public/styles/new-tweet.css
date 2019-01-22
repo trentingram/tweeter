@@ -16,6 +16,11 @@
     background-color: #eee;
 }
 
+.flexer {
+    display: flex;
+    justify-content: space-between;
+}
+
 h2 {
     font-weight: bold;
 }
@@ -31,14 +36,15 @@ textarea {
 }
 
 
+
 input {
-    float: left;
+    
     margin-top: 2px;
     background: linear-gradient(#eee, #FFFFFF);
 }
 
 span {
-    float: right;
+    
     margin-top: 9px;
     font-size: 65%;
     
