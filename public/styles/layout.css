@@ -13,13 +13,22 @@ html {
 /*
  * Global layout stuff
  */
-
-body {
-  margin: 0;
+ 
+ body {
+  font-family: 'Roboto Condensed', sans-serif;
   color: #244751;
   background-color: #eee;
 }
-
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ main {
+  margin: 0 auto;
+  padding-top: 140px;
+  padding-right: 2em;
+  padding-bottom: 55px;
+  padding-left: 2em;
+  width: 450px;
+  background-color: white;
+ }
