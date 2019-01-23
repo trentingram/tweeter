@@ -11,5 +11,16 @@ $(document).ready(function() {
             $( '.counter' ).removeClass('over-limit');
         }
     });
+    $('.tweets').on('mouseenter', function(e) {
+        console.log(e);
+        $('.tweet-icons').toggle()
+    })
+        $('.tweets').on('mouseleave', function(e) {
+        console.log(e);
+        $('.tweet-icons').toggle()
+    })
+
+
+
   });
 
