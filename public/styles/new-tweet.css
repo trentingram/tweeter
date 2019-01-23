@@ -10,7 +10,7 @@
     justify-content: space-between;
 }
 
-.container h2 {
+.container {
     font-weight: bold;
 }
 
@@ -32,6 +32,7 @@
 .container .counter {
     margin-top: 9px;
     font-size: 65%;
+    font-weight: lighter;
 }
 
 .over-limit {
