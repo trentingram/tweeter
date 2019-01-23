@@ -1,3 +1,56 @@
+// icons are broken.  Need to return to fix icons. Consider export/import file.
+// convert createdAt to days ago...
+// add margin or padding between tweets.
+// fix hover, hover should only work on individual tweets.
+
+const tweetsData = [
+    {
+      "user": {
+        "name": "Newton",
+        "avatars": {
+          "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+          "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+          "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+        },
+        "handle": "@SirIsaac"
+      },
+      "content": {
+        "text": "If I have seen further it is by standing on the shoulders of giants"
+      },
+      "created_at": 1461116232227
+    },
+    {
+      "user": {
+        "name": "Descartes",
+        "avatars": {
+          "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+          "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+          "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+        },
+        "handle": "@rd" },
+      "content": {
+        "text": "Je pense , donc je suis"
+      },
+      "created_at": 1461113959088
+    },
+    {
+      "user": {
+        "name": "Johann von Goethe",
+        "avatars": {
+          "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+          "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+        },
+        "handle": "@johann49"
+      },
+      "content": {
+        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+      },
+      "created_at": 1461113796368
+    }
+  ];
+
+
 $(document).ready(function() {
 
     $('textarea[name=text]').on('keyup', function(event) {
@@ -12,47 +65,33 @@ $(document).ready(function() {
         }
     });
     $('.tweets').on('mouseenter', function(e) {
-        console.log(e);
+        
         $('.tweet-icons').toggle()
     })
         $('.tweets').on('mouseleave', function(e) {
-        console.log(e);
+        
         $('.tweet-icons').toggle()
     });
 
-    const tweetData = {
-        "user": {
-          "name": "Newton",
-          "avatars": {
-            "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-            "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-            "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-          },
-          "handle": "@SirIsaac"
-        },
-        "content": {
-          "text": "If I have seen further it is by standing on the shoulders of giants"
-        },
-        "created_at": 1461116232227
-      }
-     function createTweetElement() {
+    
+     function createTweetElement(data) {
         var $html = 
             '<article class="article-tweets">' +
                 '<header class="tweet-header">' +
                     '<div class="tweet-image-name-container">' +
-                        '<img class="tweet-image" src="https://placekitten.com/50/50"></img>' +
-                        '<h2 class="tweet-name">Trent Ingram</h2>' +
+                        `<img class="tweet-image" src=${data.user.avatars.small}></img>` +
+                        `<h2 class="tweet-name">${data.user.name}</h2>` +
                     '</div>' +
                     '<div class="tweet-handle-container">' +
-                        '<p class="handle">@tingram</p>' +   
+                        `<p class="handle">${data.user.handle}</p>` +   
                     '</div>' +
                 '</header>' +
             '<section class="tweet-text">' +
-                '<p class="tweet-text-area">Some good ol fake news...</p>' +
+                `<p class="tweet-text-area">${data.content.text}</p>` +
             '</section>' +
             '<footer class="tweet-footer-container">' +
                 '<div class="tweet-footer">' +
-                    '<p class="tweet-footer-text">10 days ago</p>' +
+                    `<p class="tweet-footer-text">${data.created_at}</p>` +
                 '</div>'
                 '<div class="tweet-icons">' +
                     '<i class="fas fa-flag"></i>' +
@@ -63,14 +102,17 @@ $(document).ready(function() {
             '</article>'
 
     return $html;
-        
      } 
-      var $tweet = createTweetElement(tweetData);
-      
-      // Test / driver code (temporary)
-      console.log($tweet); // to see what it looks like
-      $('.tweets').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
+    
+    function renderTweets(tweets) {
+    // loops through tweets
+    tweets.forEach(tweet => {
+        console.log(tweet);
+        $aTweet = createTweetElement(tweet)
+        $('.tweets').append($aTweet)
+        })
+    }
+      renderTweets(tweetsData);
 
   });
 
