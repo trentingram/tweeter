@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
   <body>
@@ -31,7 +33,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet group">
-          <h2>Compose Tweet</h2>
+          <h2>Compose a tweet...</h2>
           <hr>
           <form action="/tweets/" method="POST">
             <textarea name="text" placeholder="What are you humming about?"></textarea>
@@ -44,6 +46,25 @@
               </div>
             </div>
           </form>
+        </section>
+        <section class="tweets">
+            <article>
+                <header class="tweet-header">
+                  <div class="tweet-image-name-container">
+                    <img class="tweet-image" src="https://placekitten.com/50/50"></img>
+                    <h2 class="tweet-name">Trent Ingram</h2>
+                  </div>
+                  <div class="tweet-handle-container">
+                    <p class="handle">@tingram</p>    
+                  </div>
+                </header>
+                <section class="tweet-text">
+                  <p class="tweet-text-area">Some good 'ol fake news...</p>
+                </section>
+                <footer class="tweet-footer">
+                  <p class="tweet-footer-text">10 days ago</p>
+                </footer>
+              </article>
         </section>
     </main>
 
