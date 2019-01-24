@@ -38,3 +38,11 @@
 .over-limit {
     color: red;
 }
+
+p.error-message {
+    display: none;
+    color: red;
+    font-size: 76%;
+    font-weight: lighter;
+    text-align: center;
+}
