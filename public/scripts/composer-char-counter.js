@@ -56,9 +56,9 @@ $('.tweet-submit').on('submit', function(e) {
 // listen for clicks on button in nav
 $('.nav-button').on('click', function() {
     console.log("listening to button.")
-    $('.new-tweet').slideToggle("slow");
-    $('.new-tweet').slideToggle("slow");
-    $('textarea[name=text]').attr('enabled', true);
+    $('.new-tweet').slideToggle("fast");
+    $('.new-tweet').slideToggle("fast");
+    $('textarea[name=text]').focus();
 })
 
 });
