@@ -37,14 +37,17 @@ $('.tweet-submit').on('submit', function(e) {
     console.log($serializedData, 'theText: ',theText);
 
     if(theText.length === 0) { 
-        alert('There is nothing to tweet about.') 
+        // alert('There is nothing to tweet about.') 
+        $('.error-message').slideDown().text('There is nothing to tweet about.')
     } else if(theText.length > 140) { 
-        alert('Your tweet is too verbose.')
+        // alert('Your tweet is too verbose.')
+        $('.error-message').slideDown().text('There is nothing to tweet about.')
     } else {
     $.ajax('/tweets/', {
         method: 'POST',
         data: $serializedData,
         success: function () {
+            $('.error-message').slideUp()
             $('.tweets').empty();
             $.get('/tweets/')
             .then(jsonData => renderTweets(jsonData))
