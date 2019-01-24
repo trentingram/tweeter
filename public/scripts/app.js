@@ -9,6 +9,7 @@ function escape(str) {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   }
+  
 //   const safeHTML = `<p>${escape(textFromUser)}</p>`;
 function createTweetElement(data) {
     var $html =
