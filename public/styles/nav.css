@@ -28,3 +28,19 @@ nav {
     font-size: 200%;
     line-height: 2.5em;
 }
+
+button.nav-button {
+    float: right;
+    height: 49px;
+    width: 90px;
+    margin-top: 16px;
+    border-radius: 5px;
+    color: #00A087;
+    border: 1px solid darkslategray;
+    opacity: .9;
+}
+
+button.nav-button:hover {
+    opacity: 1;
+    color: darkslategrey;
+}
