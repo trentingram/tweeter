@@ -1,10 +1,6 @@
-// fix alert when text is not present.
-// icons are broken.  Need to return to fix icons. Consider export/import file.
-// convert createdAt to days ago...
-// add margin or padding between tweets.
 // fix hover, hover should only work on individual tweets.
-// fix scroll issue.
-
+// fix slideDown to include slideUp when Compose is clicked
+// clear textarea after submit.
 
 $(document).ready(function() {
 
@@ -19,6 +15,7 @@ $('textarea[name=text]').on('keyup', function(event) {
         $('.counter').removeClass('over-limit');
     }
 });
+
 $('.tweets').on('mouseenter', function(e) {
 
     $('.tweet-icons').toggle()
@@ -28,13 +25,11 @@ $('.tweets').on('mouseleave', function(e) {
     $('.tweet-icons').toggle()
 });
 
-
-
 $('.tweet-submit').on('submit', function(e) {
     e.preventDefault();
     var theText = $('textarea[name=text]').val();
     let $serializedData = $(this).serialize();
-    console.log($serializedData, 'theText: ',theText);
+    
 
     if(theText.length === 0) { 
         // alert('There is nothing to tweet about.') 
@@ -51,7 +46,8 @@ $('.tweet-submit').on('submit', function(e) {
             $('.tweets').empty();
             $.get('/tweets/')
             .then(jsonData => renderTweets(jsonData))
-            console.log("post success")
+            $('textarea[name=text]').val('');
+            $('.counter').html(0);
         }
         })
     }
@@ -59,7 +55,7 @@ $('.tweet-submit').on('submit', function(e) {
 
 // listen for clicks on button in nav
 $('.nav-button').on('click', function() {
-    console.log("listening to button.")
+    $('.nav-button').toggleClass('click')
     $('.new-tweet').slideDown("slow");
     $('textarea[name=text]').focus();
 })
