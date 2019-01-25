@@ -66,7 +66,8 @@ function numConverter(num) {
       $aTweet = createTweetElement(tweet)
 
       // adds created tweet to tweets section on DOM
-      $('.tweets').prepend($aTweet)
+      $('.tweets')
+        .prepend($aTweet)
     })
   }
   
