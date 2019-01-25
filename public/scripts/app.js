@@ -3,6 +3,15 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+function numConverter(num) {
+var d1 = num;
+var d2 = new Date().getTime();
+var microSecondsDiff = Math.abs(d1 - d2 );
+var daysDiff = Math.floor(microSecondsDiff/(1000 * 60 * 60  * 24));
+
+return daysDiff
+}
+
 
 function escape(str) {
     var div = document.createElement('div');
@@ -10,8 +19,15 @@ function escape(str) {
     return div.innerHTML;
   }
   
+  let flag_icon = '<i class="fas fa-flag"></i>'
+  let retweet_icon = '<i class="fas fa-retweet"></i>'
+  let heart_icon = '<i class="fas fa-heart"></i>'
+  
+  
 //   const safeHTML = `<p>${escape(textFromUser)}</p>`;
 function createTweetElement(data) {
+    
+    var days = numConverter(data.created_at)
     var $html =
         '<article class="article-tweets">' +
         '<header class="tweet-header">' +
@@ -28,12 +44,12 @@ function createTweetElement(data) {
         '</section>' +
         '<footer class="tweet-footer-container">' +
         '<div class="tweet-footer">' +
-        `<p class="tweet-footer-text">${escape(data.created_at)}</p>` +
-        '</div>'
+        `<p class="tweet-footer-text">${escape(days)} days ago.</p>` +
+        '</div>' +
     '<div class="tweet-icons">' +
-    '<i class="fas fa-flag"></i>' +
-    '<i class="fas fa-retweet"></i>' +
-    '<i class="fas fa-heart"></i>' +
+    `${flag_icon}` +
+    `${retweet_icon}` +
+    `${heart_icon}` +
     '</div>' +
     '</footer>' +
     '</article>'
@@ -45,14 +61,14 @@ function renderTweets(tweets) {
         
     // loops through tweets
     tweets.forEach(tweet => {
-        console.log(tweet);
+        
         $aTweet = createTweetElement(tweet)
         $('.tweets').prepend($aTweet)
     })
 }
 
 $(document).ready(function() {
-    console.log('ready to fetch data')
+    
     $.get('/tweets/')
     .then(jsonData => renderTweets(jsonData))
   
