@@ -41,7 +41,7 @@ button.nav-button {
     opacity: .9;
 }
 
-button.nav-button:hover {
+button.nav-button.click {
     opacity: 1;
     color: darkslategrey;
 }
